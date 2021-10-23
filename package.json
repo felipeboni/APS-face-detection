@@ -21,7 +21,10 @@
     "test-tinyfacedetector": "set UUT=tinyFaceDetector&& karma start",
     "test-globalapi": "set UUT=globalApi&& karma start",
     "test-cpu": "set BACKEND_CPU=true&& karma start",
-    "docs": "typedoc --options ./typedoc.config.js ./src"
+    "docs": "typedoc --options ./typedoc.config.js ./src",
+    "entry": "cd examples/examples-browser/",
+    "install": "npm i",
+    "start": "npm start"
   },
   "keywords": [
     "face",
