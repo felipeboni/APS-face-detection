@@ -1,7 +1,6 @@
 # face-api.js
 
 [![Build Status](https://travis-ci.org/justadudewhohacks/face-api.js.svg?branch=master)](https://travis-ci.org/justadudewhohacks/face-api.js)
-[![Slack](https://slack.bri.im/badge.svg)](https://slack.bri.im)
 
 **JavaScript face recognition API for the browser and nodejs implemented on top of tensorflow.js core ([tensorflow/tfjs-core](https://github.com/tensorflow/tfjs))**
 
