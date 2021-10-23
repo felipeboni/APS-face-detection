@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.faceapi = global.faceapi || {}));
-}(this, (function (exports) { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.faceapi = global.faceapi || {}));
+})(this, (function (exports) { 'use strict';
 
   /**
    * @license
@@ -423,12 +423,12 @@
       }
       Object.defineProperty(Dimensions.prototype, "width", {
           get: function () { return this._width; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Dimensions.prototype, "height", {
           get: function () { return this._height; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Dimensions.prototype.reverse = function () {
@@ -485,7 +485,7 @@
       return isValidNumber(num) && 0 <= num && num <= 1.0;
   }
 
-  var index = /*#__PURE__*/Object.freeze({
+  var index$1 = /*#__PURE__*/Object.freeze({
     __proto__: null,
     isTensor: isTensor,
     isTensor1D: isTensor1D,
@@ -510,12 +510,12 @@
       }
       Object.defineProperty(Point.prototype, "x", {
           get: function () { return this._x; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Point.prototype, "y", {
           get: function () { return this._y; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Point.prototype.add = function (pt) {
@@ -574,67 +574,67 @@
       };
       Object.defineProperty(Box.prototype, "x", {
           get: function () { return this._x; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "y", {
           get: function () { return this._y; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "width", {
           get: function () { return this._width; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "height", {
           get: function () { return this._height; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "left", {
           get: function () { return this.x; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "top", {
           get: function () { return this.y; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "right", {
           get: function () { return this.x + this.width; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "bottom", {
           get: function () { return this.y + this.height; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "area", {
           get: function () { return this.width * this.height; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "topLeft", {
           get: function () { return new Point(this.left, this.top); },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "topRight", {
           get: function () { return new Point(this.right, this.top); },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "bottomLeft", {
           get: function () { return new Point(this.left, this.bottom); },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(Box.prototype, "bottomRight", {
           get: function () { return new Point(this.right, this.bottom); },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Box.prototype.round = function () {
@@ -754,42 +754,42 @@
       }
       Object.defineProperty(ObjectDetection.prototype, "score", {
           get: function () { return this._score; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(ObjectDetection.prototype, "classScore", {
           get: function () { return this._classScore; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(ObjectDetection.prototype, "className", {
           get: function () { return this._className; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(ObjectDetection.prototype, "box", {
           get: function () { return this._box; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(ObjectDetection.prototype, "imageDims", {
           get: function () { return this._imageDims; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(ObjectDetection.prototype, "imageWidth", {
           get: function () { return this.imageDims.width; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(ObjectDetection.prototype, "imageHeight", {
           get: function () { return this.imageDims.height; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(ObjectDetection.prototype, "relativeBox", {
           get: function () { return new Box(this._box).rescale(this.imageDims.reverse()); },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       ObjectDetection.prototype.forSize = function (width, height) {
@@ -830,7 +830,7 @@
       return new BoundingBox(minX, minY, maxX, maxY);
   }
 
-  function nonMaxSuppression(boxes, scores, iouThreshold, isIOU) {
+  function nonMaxSuppression$1(boxes, scores, iouThreshold, isIOU) {
       if (isIOU === void 0) { isIOU = true; }
       var indicesSortedByScore = scores
           .map(function (score, boxIndex) { return ({ score: score, boxIndex: boxIndex }); })
@@ -856,7 +856,7 @@
       return pick;
   }
 
-  function normalize(x, meanRgb) {
+  function normalize$1(x, meanRgb) {
       return Ze(function () {
           var r = meanRgb[0], g = meanRgb[1], b = meanRgb[2];
           var avg_r = Hn(__spreadArrays(x.shape.slice(0, 3), [1]), r);
@@ -947,22 +947,22 @@
       }
       Object.defineProperty(FaceLandmarks.prototype, "shift", {
           get: function () { return new Point(this._shift.x, this._shift.y); },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(FaceLandmarks.prototype, "imageWidth", {
           get: function () { return this._imgDims.width; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(FaceLandmarks.prototype, "imageHeight", {
           get: function () { return this._imgDims.height; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(FaceLandmarks.prototype, "positions", {
           get: function () { return this._positions; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(FaceLandmarks.prototype, "relativePositions", {
@@ -970,7 +970,7 @@
               var _this = this;
               return this._positions.map(function (pt) { return pt.sub(_this._shift).div(new Point(_this.imageWidth, _this.imageHeight)); });
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       FaceLandmarks.prototype.forSize = function (width, height) {
@@ -1088,12 +1088,12 @@
       }
       Object.defineProperty(FaceMatch.prototype, "label", {
           get: function () { return this._label; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(FaceMatch.prototype, "distance", {
           get: function () { return this._distance; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       FaceMatch.prototype.toString = function (withDistance) {
@@ -1118,7 +1118,7 @@
       };
       Object.defineProperty(LabeledBox.prototype, "label", {
           get: function () { return this._label; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       return LabeledBox;
@@ -1137,12 +1137,12 @@
       }
       Object.defineProperty(LabeledFaceDescriptors.prototype, "label", {
           get: function () { return this._label; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(LabeledFaceDescriptors.prototype, "descriptors", {
           get: function () { return this._descriptors; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       LabeledFaceDescriptors.prototype.toJSON = function () {
@@ -1177,12 +1177,12 @@
       };
       Object.defineProperty(PredictedBox.prototype, "score", {
           get: function () { return this._score; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(PredictedBox.prototype, "classScore", {
           get: function () { return this._classScore; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       return PredictedBox;
@@ -1669,42 +1669,42 @@
           get: function () {
               return this._imageTensors;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(NetInput.prototype, "canvases", {
           get: function () {
               return this._canvases;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(NetInput.prototype, "isBatchInput", {
           get: function () {
               return this.batchSize > 1 || this._treatAsBatchInput;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(NetInput.prototype, "batchSize", {
           get: function () {
               return this._batchSize;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(NetInput.prototype, "inputDimensions", {
           get: function () {
               return this._inputDimensions;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(NetInput.prototype, "inputSize", {
           get: function () {
               return this._inputSize;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(NetInput.prototype, "reshapedInputDimensions", {
@@ -1712,7 +1712,7 @@
               var _this = this;
               return range(this.batchSize, 0, 1).map(function (_, batchIdx) { return _this.getReshapedInputDimensions(batchIdx); });
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       NetInput.prototype.getInput = function (batchIdx) {
@@ -2034,17 +2034,17 @@
       }
       Object.defineProperty(NeuralNetwork.prototype, "params", {
           get: function () { return this._params; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(NeuralNetwork.prototype, "paramMappings", {
           get: function () { return this._paramMappings; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(NeuralNetwork.prototype, "isLoaded", {
           get: function () { return !!this.params; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       NeuralNetwork.prototype.getParamFromPath = function (paramPath) {
@@ -2196,7 +2196,7 @@
       return NeuralNetwork;
   }());
 
-  function depthwiseSeparableConv(x, params, stride) {
+  function depthwiseSeparableConv$1(x, params, stride) {
       return Ze(function () {
           var out = Jc(x, params.depthwise_filter, params.pointwise_filter, stride, 'same');
           out = rc(out, params.bias);
@@ -2209,10 +2209,10 @@
       return Ze(function () {
           var out1 = Bl(isFirstLayer
               ? rc(qc(x, denseBlockParams.conv0.filters, [2, 2], 'same'), denseBlockParams.conv0.bias)
-              : depthwiseSeparableConv(x, denseBlockParams.conv0, [2, 2]));
-          var out2 = depthwiseSeparableConv(out1, denseBlockParams.conv1, [1, 1]);
+              : depthwiseSeparableConv$1(x, denseBlockParams.conv0, [2, 2]));
+          var out2 = depthwiseSeparableConv$1(out1, denseBlockParams.conv1, [1, 1]);
           var in3 = Bl(rc(out1, out2));
-          var out3 = depthwiseSeparableConv(in3, denseBlockParams.conv2, [1, 1]);
+          var out3 = depthwiseSeparableConv$1(in3, denseBlockParams.conv2, [1, 1]);
           return Bl(rc(out1, rc(out2, out3)));
       });
   }
@@ -2222,17 +2222,17 @@
       return Ze(function () {
           var out1 = Bl(isFirstLayer
               ? rc(qc(x, denseBlockParams.conv0.filters, isScaleDown ? [2, 2] : [1, 1], 'same'), denseBlockParams.conv0.bias)
-              : depthwiseSeparableConv(x, denseBlockParams.conv0, isScaleDown ? [2, 2] : [1, 1]));
-          var out2 = depthwiseSeparableConv(out1, denseBlockParams.conv1, [1, 1]);
+              : depthwiseSeparableConv$1(x, denseBlockParams.conv0, isScaleDown ? [2, 2] : [1, 1]));
+          var out2 = depthwiseSeparableConv$1(out1, denseBlockParams.conv1, [1, 1]);
           var in3 = Bl(rc(out1, out2));
-          var out3 = depthwiseSeparableConv(in3, denseBlockParams.conv2, [1, 1]);
+          var out3 = depthwiseSeparableConv$1(in3, denseBlockParams.conv2, [1, 1]);
           var in4 = Bl(rc(out1, rc(out2, out3)));
-          var out4 = depthwiseSeparableConv(in4, denseBlockParams.conv3, [1, 1]);
+          var out4 = depthwiseSeparableConv$1(in4, denseBlockParams.conv3, [1, 1]);
           return Bl(rc(out1, rc(out2, rc(out3, out4))));
       });
   }
 
-  function convLayer(x, params, padding, withRelu) {
+  function convLayer$1(x, params, padding, withRelu) {
       if (padding === void 0) { padding = 'same'; }
       if (withRelu === void 0) { withRelu = false; }
       return Ze(function () {
@@ -2324,7 +2324,7 @@
       };
   }
 
-  function extractorsFactory(extractWeights, paramMappings) {
+  function extractorsFactory$9(extractWeights, paramMappings) {
       var extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
       var extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
       function extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer) {
@@ -2348,10 +2348,10 @@
       };
   }
 
-  function extractParams(weights) {
+  function extractParams$7(weights) {
       var paramMappings = [];
       var _a = extractWeightsFactory(weights), extractWeights = _a.extractWeights, getRemainingWeights = _a.getRemainingWeights;
-      var extractDenseBlock4Params = extractorsFactory(extractWeights, paramMappings).extractDenseBlock4Params;
+      var extractDenseBlock4Params = extractorsFactory$9(extractWeights, paramMappings).extractDenseBlock4Params;
       var dense0 = extractDenseBlock4Params(3, 32, 'dense0', true);
       var dense1 = extractDenseBlock4Params(32, 64, 'dense1');
       var dense2 = extractDenseBlock4Params(64, 128, 'dense2');
@@ -2373,7 +2373,7 @@
       };
   }
 
-  function loadParamsFactory(weightMap, paramMappings) {
+  function loadParamsFactory$1(weightMap, paramMappings) {
       var extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
       var extractConvParams = loadConvParamsFactory(extractWeightEntry);
       var extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
@@ -2402,9 +2402,9 @@
       };
   }
 
-  function extractParamsFromWeigthMap(weightMap) {
+  function extractParamsFromWeigthMap$7(weightMap) {
       var paramMappings = [];
-      var extractDenseBlock4Params = loadParamsFactory(weightMap, paramMappings).extractDenseBlock4Params;
+      var extractDenseBlock4Params = loadParamsFactory$1(weightMap, paramMappings).extractDenseBlock4Params;
       var params = {
           dense0: extractDenseBlock4Params('dense0', true),
           dense1: extractDenseBlock4Params('dense1'),
@@ -2428,7 +2428,7 @@
           return Ze(function () {
               var batchTensor = input.toBatchTensor(112, true);
               var meanRgb = [122.782, 117.001, 104.298];
-              var normalized = normalize(batchTensor, meanRgb).div(On(255));
+              var normalized = normalize$1(batchTensor, meanRgb).div(On(255));
               var out = denseBlock4(normalized, params.dense0, true);
               out = denseBlock4(out, params.dense1);
               out = denseBlock4(out, params.dense2);
@@ -2454,10 +2454,10 @@
           return 'face_feature_extractor_model';
       };
       FaceFeatureExtractor.prototype.extractParamsFromWeigthMap = function (weightMap) {
-          return extractParamsFromWeigthMap(weightMap);
+          return extractParamsFromWeigthMap$7(weightMap);
       };
       FaceFeatureExtractor.prototype.extractParams = function (weights) {
-          return extractParams(weights);
+          return extractParams$7(weights);
       };
       return FaceFeatureExtractor;
   }(NeuralNetwork));
@@ -2468,7 +2468,7 @@
       });
   }
 
-  function extractParams$1(weights, channelsIn, channelsOut) {
+  function extractParams$6(weights, channelsIn, channelsOut) {
       var paramMappings = [];
       var _a = extractWeightsFactory(weights), extractWeights = _a.extractWeights, getRemainingWeights = _a.getRemainingWeights;
       var extractFCParams = extractFCParamsFactory(extractWeights, paramMappings);
@@ -2482,7 +2482,7 @@
       };
   }
 
-  function extractParamsFromWeigthMap$1(weightMap) {
+  function extractParamsFromWeigthMap$6(weightMap) {
       var paramMappings = [];
       var extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
       function extractFcParams(prefix) {
@@ -2518,7 +2518,7 @@
           get: function () {
               return this._faceFeatureExtractor;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       FaceProcessor.prototype.runNet = function (input) {
@@ -2545,12 +2545,12 @@
           this._paramMappings = paramMappings;
       };
       FaceProcessor.prototype.extractClassifierParams = function (weights) {
-          return extractParams$1(weights, this.getClassifierChannelsIn(), this.getClassifierChannelsOut());
+          return extractParams$6(weights, this.getClassifierChannelsIn(), this.getClassifierChannelsOut());
       };
       FaceProcessor.prototype.extractParamsFromWeigthMap = function (weightMap) {
           var _a = seperateWeightMaps(weightMap), featureExtractorMap = _a.featureExtractorMap, classifierMap = _a.classifierMap;
           this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
-          return extractParamsFromWeigthMap$1(classifierMap);
+          return extractParamsFromWeigthMap$6(classifierMap);
       };
       FaceProcessor.prototype.extractParams = function (weights) {
           var cIn = this.getClassifierChannelsIn();
@@ -2762,9 +2762,7 @@
       });
   }
 
-
-
-  var index$1 = /*#__PURE__*/Object.freeze({
+  var index = /*#__PURE__*/Object.freeze({
     __proto__: null,
     drawContour: drawContour,
     drawDetections: drawDetections,
@@ -2779,7 +2777,7 @@
     DrawTextField: DrawTextField
   });
 
-  function extractorsFactory$1(extractWeights, paramMappings) {
+  function extractorsFactory$8(extractWeights, paramMappings) {
       var extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
       var extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
       function extractReductionBlockParams(channelsIn, channelsOut, mappedPrefix) {
@@ -2801,10 +2799,10 @@
           extractMainBlockParams: extractMainBlockParams
       };
   }
-  function extractParams$2(weights, numMainBlocks) {
+  function extractParams$5(weights, numMainBlocks) {
       var paramMappings = [];
       var _a = extractWeightsFactory(weights), extractWeights = _a.extractWeights, getRemainingWeights = _a.getRemainingWeights;
-      var _b = extractorsFactory$1(extractWeights, paramMappings), extractConvParams = _b.extractConvParams, extractSeparableConvParams = _b.extractSeparableConvParams, extractReductionBlockParams = _b.extractReductionBlockParams, extractMainBlockParams = _b.extractMainBlockParams;
+      var _b = extractorsFactory$8(extractWeights, paramMappings), extractConvParams = _b.extractConvParams, extractSeparableConvParams = _b.extractSeparableConvParams, extractReductionBlockParams = _b.extractReductionBlockParams, extractMainBlockParams = _b.extractMainBlockParams;
       var entry_flow_conv_in = extractConvParams(3, 32, 3, 'entry_flow/conv_in');
       var entry_flow_reduction_block_0 = extractReductionBlockParams(32, 64, 'entry_flow/reduction_block_0');
       var entry_flow_reduction_block_1 = extractReductionBlockParams(64, 128, 'entry_flow/reduction_block_1');
@@ -2832,7 +2830,7 @@
       };
   }
 
-  function loadParamsFactory$1(weightMap, paramMappings) {
+  function loadParamsFactory(weightMap, paramMappings) {
       var extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
       var extractConvParams = loadConvParamsFactory(extractWeightEntry);
       var extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
@@ -2855,9 +2853,9 @@
           extractMainBlockParams: extractMainBlockParams
       };
   }
-  function extractParamsFromWeigthMap$2(weightMap, numMainBlocks) {
+  function extractParamsFromWeigthMap$5(weightMap, numMainBlocks) {
       var paramMappings = [];
-      var _a = loadParamsFactory$1(weightMap, paramMappings), extractConvParams = _a.extractConvParams, extractSeparableConvParams = _a.extractSeparableConvParams, extractReductionBlockParams = _a.extractReductionBlockParams, extractMainBlockParams = _a.extractMainBlockParams;
+      var _a = loadParamsFactory(weightMap, paramMappings), extractConvParams = _a.extractConvParams, extractSeparableConvParams = _a.extractSeparableConvParams, extractReductionBlockParams = _a.extractReductionBlockParams, extractMainBlockParams = _a.extractMainBlockParams;
       var entry_flow_conv_in = extractConvParams('entry_flow/conv_in');
       var entry_flow_reduction_block_0 = extractReductionBlockParams('entry_flow/reduction_block_0');
       var entry_flow_reduction_block_1 = extractReductionBlockParams('entry_flow/reduction_block_1');
@@ -2880,22 +2878,22 @@
       return { params: { entry_flow: entry_flow, middle_flow: middle_flow, exit_flow: exit_flow }, paramMappings: paramMappings };
   }
 
-  function conv(x, params, stride) {
+  function conv$1(x, params, stride) {
       return rc(qc(x, params.filters, stride, 'same'), params.bias);
   }
   function reductionBlock(x, params, isActivateInput) {
       if (isActivateInput === void 0) { isActivateInput = true; }
       var out = isActivateInput ? Bl(x) : x;
-      out = depthwiseSeparableConv(out, params.separable_conv0, [1, 1]);
-      out = depthwiseSeparableConv(Bl(out), params.separable_conv1, [1, 1]);
+      out = depthwiseSeparableConv$1(out, params.separable_conv0, [1, 1]);
+      out = depthwiseSeparableConv$1(Bl(out), params.separable_conv1, [1, 1]);
       out = hl(out, [3, 3], [2, 2], 'same');
-      out = rc(out, conv(x, params.expansion_conv, [2, 2]));
+      out = rc(out, conv$1(x, params.expansion_conv, [2, 2]));
       return out;
   }
   function mainBlock(x, params) {
-      var out = depthwiseSeparableConv(Bl(x), params.separable_conv0, [1, 1]);
-      out = depthwiseSeparableConv(Bl(out), params.separable_conv1, [1, 1]);
-      out = depthwiseSeparableConv(Bl(out), params.separable_conv2, [1, 1]);
+      var out = depthwiseSeparableConv$1(Bl(x), params.separable_conv0, [1, 1]);
+      out = depthwiseSeparableConv$1(Bl(out), params.separable_conv1, [1, 1]);
+      out = depthwiseSeparableConv$1(Bl(out), params.separable_conv2, [1, 1]);
       out = rc(out, x);
       return out;
   }
@@ -2915,15 +2913,15 @@
           return Ze(function () {
               var batchTensor = input.toBatchTensor(112, true);
               var meanRgb = [122.782, 117.001, 104.298];
-              var normalized = normalize(batchTensor, meanRgb).div(On(256));
-              var out = Bl(conv(normalized, params.entry_flow.conv_in, [2, 2]));
+              var normalized = normalize$1(batchTensor, meanRgb).div(On(256));
+              var out = Bl(conv$1(normalized, params.entry_flow.conv_in, [2, 2]));
               out = reductionBlock(out, params.entry_flow.reduction_block_0, false);
               out = reductionBlock(out, params.entry_flow.reduction_block_1);
               range(_this._numMainBlocks, 0, 1).forEach(function (idx) {
                   out = mainBlock(out, params.middle_flow["main_block_" + idx]);
               });
               out = reductionBlock(out, params.exit_flow.reduction_block);
-              out = Bl(depthwiseSeparableConv(out, params.exit_flow.separable_conv, [1, 1]));
+              out = Bl(depthwiseSeparableConv$1(out, params.exit_flow.separable_conv, [1, 1]));
               return out;
           });
       };
@@ -2944,15 +2942,15 @@
           return 'tiny_xception_model';
       };
       TinyXception.prototype.extractParamsFromWeigthMap = function (weightMap) {
-          return extractParamsFromWeigthMap$2(weightMap, this._numMainBlocks);
+          return extractParamsFromWeigthMap$5(weightMap, this._numMainBlocks);
       };
       TinyXception.prototype.extractParams = function (weights) {
-          return extractParams$2(weights, this._numMainBlocks);
+          return extractParams$5(weights, this._numMainBlocks);
       };
       return TinyXception;
   }(NeuralNetwork));
 
-  function extractParams$3(weights) {
+  function extractParams$4(weights) {
       var paramMappings = [];
       var _a = extractWeightsFactory(weights), extractWeights = _a.extractWeights, getRemainingWeights = _a.getRemainingWeights;
       var extractFCParams = extractFCParamsFactory(extractWeights, paramMappings);
@@ -2967,7 +2965,7 @@
       };
   }
 
-  function extractParamsFromWeigthMap$3(weightMap) {
+  function extractParamsFromWeigthMap$4(weightMap) {
       var paramMappings = [];
       var extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
       function extractFcParams(prefix) {
@@ -2985,6 +2983,7 @@
       return { params: params, paramMappings: paramMappings };
   }
 
+  exports.Gender = void 0;
   (function (Gender) {
       Gender["FEMALE"] = "female";
       Gender["MALE"] = "male";
@@ -3002,7 +3001,7 @@
           get: function () {
               return this._faceFeatureExtractor;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       AgeGenderNet.prototype.runNet = function (input) {
@@ -3106,12 +3105,12 @@
           this._paramMappings = paramMappings;
       };
       AgeGenderNet.prototype.extractClassifierParams = function (weights) {
-          return extractParams$3(weights);
+          return extractParams$4(weights);
       };
       AgeGenderNet.prototype.extractParamsFromWeigthMap = function (weightMap) {
           var _a = seperateWeightMaps(weightMap), featureExtractorMap = _a.featureExtractorMap, classifierMap = _a.classifierMap;
           this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
-          return extractParamsFromWeigthMap$3(classifierMap);
+          return extractParamsFromWeigthMap$4(classifierMap);
       };
       AgeGenderNet.prototype.extractParams = function (weights) {
           var classifierWeightSize = (512 * 1 + 1) + (512 * 2 + 2);
@@ -3246,7 +3245,7 @@
 
   function extractParamsFromWeigthMapTiny(weightMap) {
       var paramMappings = [];
-      var extractDenseBlock3Params = loadParamsFactory(weightMap, paramMappings).extractDenseBlock3Params;
+      var extractDenseBlock3Params = loadParamsFactory$1(weightMap, paramMappings).extractDenseBlock3Params;
       var params = {
           dense0: extractDenseBlock3Params('dense0', true),
           dense1: extractDenseBlock3Params('dense1'),
@@ -3259,7 +3258,7 @@
   function extractParamsTiny(weights) {
       var paramMappings = [];
       var _a = extractWeightsFactory(weights), extractWeights = _a.extractWeights, getRemainingWeights = _a.getRemainingWeights;
-      var extractDenseBlock3Params = extractorsFactory(extractWeights, paramMappings).extractDenseBlock3Params;
+      var extractDenseBlock3Params = extractorsFactory$9(extractWeights, paramMappings).extractDenseBlock3Params;
       var dense0 = extractDenseBlock3Params(3, 32, 'dense0', true);
       var dense1 = extractDenseBlock3Params(32, 64, 'dense1');
       var dense2 = extractDenseBlock3Params(64, 128, 'dense2');
@@ -3285,7 +3284,7 @@
           return Ze(function () {
               var batchTensor = input.toBatchTensor(112, true);
               var meanRgb = [122.782, 117.001, 104.298];
-              var normalized = normalize(batchTensor, meanRgb).div(On(255));
+              var normalized = normalize$1(batchTensor, meanRgb).div(On(255));
               var out = denseBlock3(normalized, params.dense0, true);
               out = denseBlock3(out, params.dense1);
               out = denseBlock3(out, params.dense2);
@@ -3345,7 +3344,7 @@
       return rc(gc(x, params.weights), params.biases);
   }
 
-  function convLayer$1(x, params, strides, withRelu, padding) {
+  function convLayer(x, params, strides, withRelu, padding) {
       if (padding === void 0) { padding = 'same'; }
       var _a = params.conv, filters = _a.filters, bias = _a.bias;
       var out = qc(x, filters, strides, padding);
@@ -3353,17 +3352,17 @@
       out = scale(out, params.scale);
       return withRelu ? Bl(out) : out;
   }
-  function conv$1(x, params) {
-      return convLayer$1(x, params, [1, 1], true);
+  function conv(x, params) {
+      return convLayer(x, params, [1, 1], true);
   }
   function convNoRelu(x, params) {
-      return convLayer$1(x, params, [1, 1], false);
+      return convLayer(x, params, [1, 1], false);
   }
   function convDown(x, params) {
-      return convLayer$1(x, params, [2, 2], true, 'valid');
+      return convLayer(x, params, [2, 2], true, 'valid');
   }
 
-  function extractorsFactory$2(extractWeights, paramMappings) {
+  function extractorsFactory$7(extractWeights, paramMappings) {
       function extractFilterValues(numFilterValues, numFilters, filterSize) {
           var weights = extractWeights(numFilterValues);
           var depth = weights.length / (numFilters * filterSize * filterSize);
@@ -3403,10 +3402,10 @@
           extractResidualLayerParams: extractResidualLayerParams
       };
   }
-  function extractParams$4(weights) {
+  function extractParams$3(weights) {
       var _a = extractWeightsFactory(weights), extractWeights = _a.extractWeights, getRemainingWeights = _a.getRemainingWeights;
       var paramMappings = [];
-      var _b = extractorsFactory$2(extractWeights, paramMappings), extractConvLayerParams = _b.extractConvLayerParams, extractResidualLayerParams = _b.extractResidualLayerParams;
+      var _b = extractorsFactory$7(extractWeights, paramMappings), extractConvLayerParams = _b.extractConvLayerParams, extractResidualLayerParams = _b.extractResidualLayerParams;
       var conv32_down = extractConvLayerParams(4704, 32, 7, 'conv32_down');
       var conv32_1 = extractResidualLayerParams(9216, 32, 3, 'conv32_1');
       var conv32_2 = extractResidualLayerParams(9216, 32, 3, 'conv32_2');
@@ -3448,7 +3447,7 @@
       return { params: params, paramMappings: paramMappings };
   }
 
-  function extractorsFactory$3(weightMap, paramMappings) {
+  function extractorsFactory$6(weightMap, paramMappings) {
       var extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
       function extractScaleLayerParams(prefix) {
           var weights = extractWeightEntry(prefix + "/scale/weights", 1);
@@ -3472,9 +3471,9 @@
           extractResidualLayerParams: extractResidualLayerParams
       };
   }
-  function extractParamsFromWeigthMap$4(weightMap) {
+  function extractParamsFromWeigthMap$3(weightMap) {
       var paramMappings = [];
-      var _a = extractorsFactory$3(weightMap, paramMappings), extractConvLayerParams = _a.extractConvLayerParams, extractResidualLayerParams = _a.extractResidualLayerParams;
+      var _a = extractorsFactory$6(weightMap, paramMappings), extractConvLayerParams = _a.extractConvLayerParams, extractResidualLayerParams = _a.extractResidualLayerParams;
       var conv32_down = extractConvLayerParams('conv32_down');
       var conv32_1 = extractResidualLayerParams('conv32_1');
       var conv32_2 = extractResidualLayerParams('conv32_2');
@@ -3518,7 +3517,7 @@
   }
 
   function residual(x, params) {
-      var out = conv$1(x, params.conv1);
+      var out = conv(x, params.conv1);
       out = convNoRelu(out, params.conv2);
       out = rc(out, x);
       out = Bl(out);
@@ -3560,7 +3559,7 @@
           return Ze(function () {
               var batchTensor = input.toBatchTensor(150, true).toFloat();
               var meanRgb = [122.782, 117.001, 104.298];
-              var normalized = normalize(batchTensor, meanRgb).div(On(256));
+              var normalized = normalize$1(batchTensor, meanRgb).div(On(256));
               var out = convDown(normalized, params.conv32_down);
               out = hl(out, 3, 2, 'valid');
               out = residual(out, params.conv32_1);
@@ -3620,10 +3619,10 @@
           return 'face_recognition_model';
       };
       FaceRecognitionNet.prototype.extractParamsFromWeigthMap = function (weightMap) {
-          return extractParamsFromWeigthMap$4(weightMap);
+          return extractParamsFromWeigthMap$3(weightMap);
       };
       FaceRecognitionNet.prototype.extractParams = function (weights) {
-          return extractParams$4(weights);
+          return extractParams$3(weights);
       };
       return FaceRecognitionNet;
   }(NeuralNetwork));
@@ -3686,33 +3685,33 @@
       }
       Object.defineProperty(MtcnnOptions.prototype, "minFaceSize", {
           get: function () { return this._minFaceSize; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(MtcnnOptions.prototype, "scaleFactor", {
           get: function () { return this._scaleFactor; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(MtcnnOptions.prototype, "maxNumScales", {
           get: function () { return this._maxNumScales; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(MtcnnOptions.prototype, "scoreThresholds", {
           get: function () { return this._scoreThresholds; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(MtcnnOptions.prototype, "scaleSteps", {
           get: function () { return this._scaleSteps; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       return MtcnnOptions;
   }());
 
-  function extractorsFactory$4(extractWeights, paramMappings) {
+  function extractorsFactory$5(extractWeights, paramMappings) {
       function extractDepthwiseConvParams(numChannels, mappedPrefix) {
           var filters = Ln(extractWeights(3 * 3 * numChannels), [3, 3, numChannels, 1]);
           var batch_norm_scale = Mn(extractWeights(numChannels));
@@ -3845,10 +3844,10 @@
           extractPredictionLayerParams: extractPredictionLayerParams
       };
   }
-  function extractParams$5(weights) {
+  function extractParams$2(weights) {
       var paramMappings = [];
       var _a = extractWeightsFactory(weights), extractWeights = _a.extractWeights, getRemainingWeights = _a.getRemainingWeights;
-      var _b = extractorsFactory$4(extractWeights, paramMappings), extractMobilenetV1Params = _b.extractMobilenetV1Params, extractPredictionLayerParams = _b.extractPredictionLayerParams;
+      var _b = extractorsFactory$5(extractWeights, paramMappings), extractMobilenetV1Params = _b.extractMobilenetV1Params, extractPredictionLayerParams = _b.extractPredictionLayerParams;
       var mobilenetv1 = extractMobilenetV1Params();
       var prediction_layer = extractPredictionLayerParams();
       var extra_dim = Pn(extractWeights(5118 * 4), [1, 5118, 4]);
@@ -3869,7 +3868,7 @@
       };
   }
 
-  function extractorsFactory$5(weightMap, paramMappings) {
+  function extractorsFactory$4(weightMap, paramMappings) {
       var extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
       function extractPointwiseConvParams(prefix, idx, mappedPrefix) {
           var filters = extractWeightEntry(prefix + "/Conv2d_" + idx + "_pointwise/weights", 4, mappedPrefix + "/filters");
@@ -3948,9 +3947,9 @@
           extractPredictionLayerParams: extractPredictionLayerParams
       };
   }
-  function extractParamsFromWeigthMap$5(weightMap) {
+  function extractParamsFromWeigthMap$2(weightMap) {
       var paramMappings = [];
-      var _a = extractorsFactory$5(weightMap, paramMappings), extractMobilenetV1Params = _a.extractMobilenetV1Params, extractPredictionLayerParams = _a.extractPredictionLayerParams;
+      var _a = extractorsFactory$4(weightMap, paramMappings), extractMobilenetV1Params = _a.extractMobilenetV1Params, extractPredictionLayerParams = _a.extractPredictionLayerParams;
       var extra_dim = weightMap['Output/extra_dim'];
       paramMappings.push({ originalPath: 'Output/extra_dim', paramPath: 'output_layer/extra_dim' });
       if (!isTensor3D(extra_dim)) {
@@ -4024,7 +4023,7 @@
       });
   }
 
-  function nonMaxSuppression$1(boxes, scores, maxOutputSize, iouThreshold, scoreThreshold) {
+  function nonMaxSuppression(boxes, scores, maxOutputSize, iouThreshold, scoreThreshold) {
       var numBoxes = boxes.shape[0];
       var outputSize = Math.min(maxOutputSize, numBoxes);
       var candidates = scores
@@ -4127,8 +4126,8 @@
   function boxPredictionLayer(x, params) {
       return Ze(function () {
           var batchSize = x.shape[0];
-          var boxPredictionEncoding = Or(convLayer(x, params.box_encoding_predictor), [batchSize, -1, 1, 4]);
-          var classPrediction = Or(convLayer(x, params.class_predictor), [batchSize, -1, 3]);
+          var boxPredictionEncoding = Or(convLayer$1(x, params.box_encoding_predictor), [batchSize, -1, 1, 4]);
+          var classPrediction = Or(convLayer$1(x, params.class_predictor), [batchSize, -1, 3]);
           return {
               boxPredictionEncoding: boxPredictionEncoding,
               classPrediction: classPrediction
@@ -4190,12 +4189,12 @@
       }
       Object.defineProperty(SsdMobilenetv1Options.prototype, "minConfidence", {
           get: function () { return this._minConfidence; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(SsdMobilenetv1Options.prototype, "maxResults", {
           get: function () { return this._maxResults; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       return SsdMobilenetv1Options;
@@ -4255,7 +4254,7 @@
                       case 2:
                           scoresData = _d.apply(_c, [_e.sent()]);
                           iouThreshold = 0.5;
-                          indices = nonMaxSuppression$1(boxes, scoresData, maxResults, iouThreshold, minConfidence);
+                          indices = nonMaxSuppression(boxes, scoresData, maxResults, iouThreshold, minConfidence);
                           reshapedDims = netInput.getReshapedInputDimensions(0);
                           inputSize = netInput.inputSize;
                           padX = inputSize / reshapedDims.width;
@@ -4287,10 +4286,10 @@
           return 'ssd_mobilenetv1_model';
       };
       SsdMobilenetv1.prototype.extractParamsFromWeigthMap = function (weightMap) {
-          return extractParamsFromWeigthMap$5(weightMap);
+          return extractParamsFromWeigthMap$2(weightMap);
       };
       SsdMobilenetv1.prototype.extractParams = function (weights) {
-          return extractParams$5(weights);
+          return extractParams$2(weights);
       };
       return SsdMobilenetv1;
   }(NeuralNetwork));
@@ -4312,8 +4311,8 @@
       return FaceDetectionNet;
   }(SsdMobilenetv1));
 
-  var IOU_THRESHOLD = 0.4;
-  var BOX_ANCHORS = [
+  var IOU_THRESHOLD$1 = 0.4;
+  var BOX_ANCHORS$1 = [
       new Point(0.738768, 0.874946),
       new Point(2.42204, 2.65704),
       new Point(4.30971, 7.04493),
@@ -4378,7 +4377,7 @@
       });
   }
 
-  function depthwiseSeparableConv$1(x, params) {
+  function depthwiseSeparableConv(x, params) {
       return Ze(function () {
           var out = Ir(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
           out = Jc(out, params.depthwise_filter, params.pointwise_filter, [1, 1], 'valid');
@@ -4387,7 +4386,7 @@
       });
   }
 
-  function extractorsFactory$6(extractWeights, paramMappings) {
+  function extractorsFactory$3(extractWeights, paramMappings) {
       var extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
       function extractBatchNormParams(size, mappedPrefix) {
           var sub = Mn(extractWeights(size));
@@ -4407,10 +4406,10 @@
           extractSeparableConvParams: extractSeparableConvParams
       };
   }
-  function extractParams$6(weights, config, boxEncodingSize, filterSizes) {
+  function extractParams$1(weights, config, boxEncodingSize, filterSizes) {
       var _a = extractWeightsFactory(weights), extractWeights = _a.extractWeights, getRemainingWeights = _a.getRemainingWeights;
       var paramMappings = [];
-      var _b = extractorsFactory$6(extractWeights, paramMappings), extractConvParams = _b.extractConvParams, extractConvWithBatchNormParams = _b.extractConvWithBatchNormParams, extractSeparableConvParams = _b.extractSeparableConvParams;
+      var _b = extractorsFactory$3(extractWeights, paramMappings), extractConvParams = _b.extractConvParams, extractConvWithBatchNormParams = _b.extractConvWithBatchNormParams, extractSeparableConvParams = _b.extractSeparableConvParams;
       var params;
       if (config.withSeparableConvs) {
           var s0 = filterSizes[0], s1 = filterSizes[1], s2 = filterSizes[2], s3 = filterSizes[3], s4 = filterSizes[4], s5 = filterSizes[5], s6 = filterSizes[6], s7 = filterSizes[7], s8 = filterSizes[8];
@@ -4446,7 +4445,7 @@
       return { params: params, paramMappings: paramMappings };
   }
 
-  function extractorsFactory$7(weightMap, paramMappings) {
+  function extractorsFactory$2(weightMap, paramMappings) {
       var extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
       function extractBatchNormParams(prefix) {
           var sub = extractWeightEntry(prefix + "/sub", 1);
@@ -4470,9 +4469,9 @@
           extractSeparableConvParams: extractSeparableConvParams
       };
   }
-  function extractParamsFromWeigthMap$6(weightMap, config) {
+  function extractParamsFromWeigthMap$1(weightMap, config) {
       var paramMappings = [];
-      var _a = extractorsFactory$7(weightMap, paramMappings), extractConvParams = _a.extractConvParams, extractConvWithBatchNormParams = _a.extractConvWithBatchNormParams, extractSeparableConvParams = _a.extractSeparableConvParams;
+      var _a = extractorsFactory$2(weightMap, paramMappings), extractConvParams = _a.extractConvParams, extractConvWithBatchNormParams = _a.extractConvWithBatchNormParams, extractSeparableConvParams = _a.extractSeparableConvParams;
       var params;
       if (config.withSeparableConvs) {
           var numFilters = (config.filterSizes && config.filterSizes.length || 9);
@@ -4505,6 +4504,7 @@
       return { params: params, paramMappings: paramMappings };
   }
 
+  exports.TinyYolov2SizeType = void 0;
   (function (TinyYolov2SizeType) {
       TinyYolov2SizeType[TinyYolov2SizeType["XS"] = 224] = "XS";
       TinyYolov2SizeType[TinyYolov2SizeType["SM"] = 320] = "SM";
@@ -4526,12 +4526,12 @@
       }
       Object.defineProperty(TinyYolov2Options.prototype, "inputSize", {
           get: function () { return this._inputSize; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(TinyYolov2Options.prototype, "scoreThreshold", {
           get: function () { return this._scoreThreshold; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       return TinyYolov2Options;
@@ -4549,21 +4549,21 @@
           get: function () {
               return this._config;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(TinyYolov2Base.prototype, "withClassScores", {
           get: function () {
               return this.config.withClassScores || this.config.classes.length > 1;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(TinyYolov2Base.prototype, "boxEncodingSize", {
           get: function () {
               return 5 + (this.withClassScores ? this.config.classes.length : 0);
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       TinyYolov2Base.prototype.runTinyYolov2 = function (x, params) {
@@ -4581,26 +4581,26 @@
           out = hl(out, [2, 2], [1, 1], 'same');
           out = convWithBatchNorm(out, params.conv6);
           out = convWithBatchNorm(out, params.conv7);
-          return convLayer(out, params.conv8, 'valid', false);
+          return convLayer$1(out, params.conv8, 'valid', false);
       };
       TinyYolov2Base.prototype.runMobilenet = function (x, params) {
           var out = this.config.isFirstLayerConv2d
-              ? leaky(convLayer(x, params.conv0, 'valid', false))
-              : depthwiseSeparableConv$1(x, params.conv0);
+              ? leaky(convLayer$1(x, params.conv0, 'valid', false))
+              : depthwiseSeparableConv(x, params.conv0);
           out = hl(out, [2, 2], [2, 2], 'same');
-          out = depthwiseSeparableConv$1(out, params.conv1);
+          out = depthwiseSeparableConv(out, params.conv1);
           out = hl(out, [2, 2], [2, 2], 'same');
-          out = depthwiseSeparableConv$1(out, params.conv2);
+          out = depthwiseSeparableConv(out, params.conv2);
           out = hl(out, [2, 2], [2, 2], 'same');
-          out = depthwiseSeparableConv$1(out, params.conv3);
+          out = depthwiseSeparableConv(out, params.conv3);
           out = hl(out, [2, 2], [2, 2], 'same');
-          out = depthwiseSeparableConv$1(out, params.conv4);
+          out = depthwiseSeparableConv(out, params.conv4);
           out = hl(out, [2, 2], [2, 2], 'same');
-          out = depthwiseSeparableConv$1(out, params.conv5);
+          out = depthwiseSeparableConv(out, params.conv5);
           out = hl(out, [2, 2], [1, 1], 'same');
-          out = params.conv6 ? depthwiseSeparableConv$1(out, params.conv6) : out;
-          out = params.conv7 ? depthwiseSeparableConv$1(out, params.conv7) : out;
-          return convLayer(out, params.conv8, 'valid', false);
+          out = params.conv6 ? depthwiseSeparableConv(out, params.conv6) : out;
+          out = params.conv7 ? depthwiseSeparableConv(out, params.conv7) : out;
+          return convLayer$1(out, params.conv8, 'valid', false);
       };
       TinyYolov2Base.prototype.forwardInput = function (input, inputSize) {
           var _this = this;
@@ -4611,7 +4611,7 @@
           return Ze(function () {
               var batchTensor = input.toBatchTensor(inputSize, false).toFloat();
               batchTensor = _this.config.meanRgb
-                  ? normalize(batchTensor, _this.config.meanRgb)
+                  ? normalize$1(batchTensor, _this.config.meanRgb)
                   : batchTensor;
               batchTensor = batchTensor.div(On(256));
               return _this.config.withSeparableConvs
@@ -4662,7 +4662,7 @@
                           scores = results.map(function (res) { return res.score; });
                           classScores = results.map(function (res) { return res.classScore; });
                           classNames = results.map(function (res) { return _this.config.classes[res.label]; });
-                          indices = nonMaxSuppression(boxes.map(function (box) { return box.rescale(inputSize); }), scores, this.config.iouThreshold, true);
+                          indices = nonMaxSuppression$1(boxes.map(function (box) { return box.rescale(inputSize); }), scores, this.config.iouThreshold, true);
                           detections = indices.map(function (idx) {
                               return new ObjectDetection(scores[idx], classScores[idx], classNames[idx], boxes[idx], inputDimensions);
                           });
@@ -4675,7 +4675,7 @@
           return '';
       };
       TinyYolov2Base.prototype.extractParamsFromWeigthMap = function (weightMap) {
-          return extractParamsFromWeigthMap$6(weightMap, this.config);
+          return extractParamsFromWeigthMap$1(weightMap, this.config);
       };
       TinyYolov2Base.prototype.extractParams = function (weights) {
           var filterSizes = this.config.filterSizes || TinyYolov2Base.DEFAULT_FILTER_SIZES;
@@ -4683,7 +4683,7 @@
           if (numFilters !== 7 && numFilters !== 8 && numFilters !== 9) {
               throw new Error("TinyYolov2 - expected 7 | 8 | 9 convolutional filters, but found " + numFilters + " filterSizes in config");
           }
-          return extractParams$6(weights, this.config, this.boxEncodingSize, filterSizes);
+          return extractParams$1(weights, this.config, this.boxEncodingSize, filterSizes);
       };
       TinyYolov2Base.prototype.extractBoxes = function (outputTensor, inputBlobDimensions, scoreThreshold) {
           return __awaiter(this, void 0, void 0, function () {
@@ -4799,7 +4799,7 @@
           var _this = this;
           var config = Object.assign({}, {
               withSeparableConvs: withSeparableConvs,
-              iouThreshold: IOU_THRESHOLD,
+              iouThreshold: IOU_THRESHOLD$1,
               classes: ['face']
           }, withSeparableConvs
               ? {
@@ -4807,7 +4807,7 @@
                   meanRgb: MEAN_RGB_SEPARABLE
               }
               : {
-                  anchors: BOX_ANCHORS,
+                  anchors: BOX_ANCHORS$1,
                   withClassScores: true
               });
           _this = _super.call(this, config) || this;
@@ -4817,14 +4817,14 @@
           get: function () {
               return this.config.withSeparableConvs;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(TinyYolov2.prototype, "anchors", {
           get: function () {
               return this.config.anchors;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       TinyYolov2.prototype.locateFaces = function (input, forwardParams) {
@@ -4950,7 +4950,7 @@
   var CELL_STRIDE = 2;
   var CELL_SIZE = 12;
 
-  function extractorsFactory$8(extractWeights, paramMappings) {
+  function extractorsFactory$1(extractWeights, paramMappings) {
       var extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
       var extractFCParams = extractFCParamsFactory(extractWeights, paramMappings);
       function extractPReluParams(size, paramPath) {
@@ -4999,10 +4999,10 @@
           extractONetParams: extractONetParams
       };
   }
-  function extractParams$7(weights) {
+  function extractParams(weights) {
       var _a = extractWeightsFactory(weights), extractWeights = _a.extractWeights, getRemainingWeights = _a.getRemainingWeights;
       var paramMappings = [];
-      var _b = extractorsFactory$8(extractWeights, paramMappings), extractPNetParams = _b.extractPNetParams, extractRNetParams = _b.extractRNetParams, extractONetParams = _b.extractONetParams;
+      var _b = extractorsFactory$1(extractWeights, paramMappings), extractPNetParams = _b.extractPNetParams, extractRNetParams = _b.extractRNetParams, extractONetParams = _b.extractONetParams;
       var pnet = extractPNetParams();
       var rnet = extractRNetParams();
       var onet = extractONetParams();
@@ -5012,7 +5012,7 @@
       return { params: { pnet: pnet, rnet: rnet, onet: onet }, paramMappings: paramMappings };
   }
 
-  function extractorsFactory$9(weightMap, paramMappings) {
+  function extractorsFactory(weightMap, paramMappings) {
       var extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
       function extractConvParams(prefix) {
           var filters = extractWeightEntry(prefix + "/weights", 4, prefix + "/filters");
@@ -5067,9 +5067,9 @@
           extractONetParams: extractONetParams
       };
   }
-  function extractParamsFromWeigthMap$7(weightMap) {
+  function extractParamsFromWeigthMap(weightMap) {
       var paramMappings = [];
-      var _a = extractorsFactory$9(weightMap, paramMappings), extractPNetParams = _a.extractPNetParams, extractRNetParams = _a.extractRNetParams, extractONetParams = _a.extractONetParams;
+      var _a = extractorsFactory(weightMap, paramMappings), extractPNetParams = _a.extractPNetParams, extractRNetParams = _a.extractRNetParams, extractONetParams = _a.extractONetParams;
       var pnet = extractPNetParams();
       var rnet = extractRNetParams();
       var onet = extractONetParams();
@@ -5107,7 +5107,7 @@
       return MtcnnBox;
   }(Box));
 
-  function normalize$1(x) {
+  function normalize(x) {
       return Ze(function () { return gc(Cc(x, On(127.5)), On(0.0078125)); });
   }
 
@@ -5120,13 +5120,13 @@
   function sharedLayer(x, params, isPnet) {
       if (isPnet === void 0) { isPnet = false; }
       return Ze(function () {
-          var out = convLayer(x, params.conv1, 'valid');
+          var out = convLayer$1(x, params.conv1, 'valid');
           out = prelu(out, params.prelu1_alpha);
           out = hl(out, isPnet ? [2, 2] : [3, 3], [2, 2], 'same');
-          out = convLayer(out, params.conv2, 'valid');
+          out = convLayer$1(out, params.conv2, 'valid');
           out = prelu(out, params.prelu2_alpha);
           out = isPnet ? out : hl(out, [3, 3], [2, 2], 'valid');
-          out = convLayer(out, params.conv3, 'valid');
+          out = convLayer$1(out, params.conv3, 'valid');
           out = prelu(out, params.prelu3_alpha);
           return out;
       });
@@ -5135,10 +5135,10 @@
   function PNet(x, params) {
       return Ze(function () {
           var out = sharedLayer(x, params, true);
-          var conv = convLayer(out, params.conv4_1, 'valid');
+          var conv = convLayer$1(out, params.conv4_1, 'valid');
           var max = wr(Sl(conv, 3), 3);
           var prob = go(Cc(conv, max), 3);
-          var regions = convLayer(out, params.conv4_2, 'valid');
+          var regions = convLayer$1(out, params.conv4_2, 'valid');
           return { prob: prob, regions: regions };
       });
   }
@@ -5147,7 +5147,7 @@
       return Ze(function () {
           var _a = getSizesForScale(scale, x.shape.slice(1)), height = _a.height, width = _a.width;
           var resized = Oh.resizeBilinear(x, [height, width]);
-          var normalized = normalize$1(resized);
+          var normalized = normalize(resized);
           return Wl(normalized, [0, 2, 1, 3]);
       });
   }
@@ -5202,7 +5202,7 @@
               return [];
           }
           var ts = Date.now();
-          var indices = nonMaxSuppression(boundingBoxes.map(function (bbox) { return bbox.cell; }), boundingBoxes.map(function (bbox) { return bbox.score; }), 0.5);
+          var indices = nonMaxSuppression$1(boundingBoxes.map(function (bbox) { return bbox.cell; }), boundingBoxes.map(function (bbox) { return bbox.score; }), 0.5);
           statsForScale.nms = Date.now() - ts;
           statsForScale.numBoxes = indices.length;
           stats.stage1.push(statsForScale);
@@ -5213,7 +5213,7 @@
       var finalScores = [];
       if (allBoxes.length > 0) {
           var ts = Date.now();
-          var indices = nonMaxSuppression(allBoxes.map(function (bbox) { return bbox.cell; }), allBoxes.map(function (bbox) { return bbox.score; }), 0.7);
+          var indices = nonMaxSuppression$1(allBoxes.map(function (bbox) { return bbox.cell; }), allBoxes.map(function (bbox) { return bbox.score; }), 0.7);
           stats.stage1_nms = Date.now() - ts;
           finalScores = indices.map(function (idx) { return allBoxes[idx].score; });
           finalBoxes = indices
@@ -5268,7 +5268,7 @@
                       return [2 /*return*/, imagePatchesDatas.map(function (data) {
                               var t = Ze(function () {
                                   var imagePatchTensor = Wl(Ln(data, [1, width, height, 3]), [0, 2, 1, 3]).toFloat();
-                                  return normalize$1(imagePatchTensor);
+                                  return normalize(imagePatchTensor);
                               });
                               return t;
                           })];
@@ -5331,7 +5331,7 @@
                       finalScores = [];
                       if (filteredBoxes.length > 0) {
                           ts = Date.now();
-                          indicesNms = nonMaxSuppression(filteredBoxes, filteredScores, 0.7);
+                          indicesNms = nonMaxSuppression$1(filteredBoxes, filteredScores, 0.7);
                           stats.stage2_nms = Date.now() - ts;
                           regions_1 = indicesNms.map(function (idx) {
                               var regionsData = rnetOuts[indices[idx]].regions.arraySync();
@@ -5357,7 +5357,7 @@
       return Ze(function () {
           var out = sharedLayer(x, params);
           out = hl(out, [2, 2], [2, 2], 'same');
-          out = convLayer(out, params.conv4, 'valid');
+          out = convLayer$1(out, params.conv4, 'valid');
           out = prelu(out, params.prelu4_alpha);
           var vectorized = Or(out, [out.shape[0], params.fc1.weights.shape[0]]);
           var fc1 = fullyConnectedLayer(vectorized, params.fc1);
@@ -5417,7 +5417,7 @@
                       points = [];
                       if (filteredBoxes.length > 0) {
                           ts = Date.now();
-                          indicesNms = nonMaxSuppression(filteredBoxes, filteredScores, 0.7, false);
+                          indicesNms = nonMaxSuppression$1(filteredBoxes, filteredScores, 0.7, false);
                           stats.stage3_nms = Date.now() - ts;
                           finalBoxes = indicesNms.map(function (idx) { return filteredBoxes[idx]; });
                           finalScores = indicesNms.map(function (idx) { return filteredScores[idx]; });
@@ -5543,8 +5543,7 @@
                       case 0:
                           _a = this.forwardInput;
                           return [4 /*yield*/, toNetInput(input)];
-                      case 1: return [4 /*yield*/, _a.apply(this, [_b.sent(),
-                              forwardParams])];
+                      case 1: return [4 /*yield*/, _a.apply(this, [_b.sent(), forwardParams])];
                       case 2: return [2 /*return*/, (_b.sent()).results];
                   }
               });
@@ -5559,8 +5558,7 @@
                       case 0:
                           _a = this.forwardInput;
                           return [4 /*yield*/, toNetInput(input)];
-                      case 1: return [2 /*return*/, _a.apply(this, [_b.sent(),
-                              forwardParams])];
+                      case 1: return [2 /*return*/, _a.apply(this, [_b.sent(), forwardParams])];
                   }
               });
           });
@@ -5569,16 +5567,16 @@
           return 'mtcnn_model';
       };
       Mtcnn.prototype.extractParamsFromWeigthMap = function (weightMap) {
-          return extractParamsFromWeigthMap$7(weightMap);
+          return extractParamsFromWeigthMap(weightMap);
       };
       Mtcnn.prototype.extractParams = function (weights) {
-          return extractParams$7(weights);
+          return extractParams(weights);
       };
       return Mtcnn;
   }(NeuralNetwork));
 
-  var IOU_THRESHOLD$1 = 0.4;
-  var BOX_ANCHORS$1 = [
+  var IOU_THRESHOLD = 0.4;
+  var BOX_ANCHORS = [
       new Point(1.603231, 2.094468),
       new Point(6.041143, 7.080126),
       new Point(2.882459, 3.518061),
@@ -5593,9 +5591,9 @@
           var _this = this;
           var config = {
               withSeparableConvs: true,
-              iouThreshold: IOU_THRESHOLD$1,
+              iouThreshold: IOU_THRESHOLD,
               classes: ['face'],
-              anchors: BOX_ANCHORS$1,
+              anchors: BOX_ANCHORS,
               meanRgb: MEAN_RGB,
               isFirstLayerConv2d: true,
               filterSizes: [3, 16, 32, 64, 128, 256, 512]
@@ -5607,7 +5605,7 @@
           get: function () {
               return this.config.anchors;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       TinyFaceDetector.prototype.locateFaces = function (input, forwardParams) {
@@ -6047,7 +6045,7 @@
                   ? nets.faceLandmark68TinyNet
                   : nets.faceLandmark68Net;
           },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       return DetectFaceLandmarksTaskBase;
@@ -6360,12 +6358,12 @@
       }
       Object.defineProperty(FaceMatcher.prototype, "labeledDescriptors", {
           get: function () { return this._labeledDescriptors; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       Object.defineProperty(FaceMatcher.prototype, "distanceThreshold", {
           get: function () { return this._distanceThreshold; },
-          enumerable: true,
+          enumerable: false,
           configurable: true
       });
       FaceMatcher.prototype.computeMeanDistance = function (queryDescriptor, descriptors) {
@@ -6501,7 +6499,7 @@
   exports.detectFaceLandmarksTiny = detectFaceLandmarksTiny;
   exports.detectLandmarks = detectLandmarks;
   exports.detectSingleFace = detectSingleFace;
-  exports.draw = index$1;
+  exports.draw = index;
   exports.env = env;
   exports.euclideanDistance = euclideanDistance;
   exports.extendWithAge = extendWithAge;
@@ -6545,8 +6543,8 @@
   exports.minBbox = minBbox;
   exports.mtcnn = mtcnn;
   exports.nets = nets;
-  exports.nonMaxSuppression = nonMaxSuppression;
-  exports.normalize = normalize;
+  exports.nonMaxSuppression = nonMaxSuppression$1;
+  exports.normalize = normalize$1;
   exports.padToSquare = padToSquare;
   exports.predictAgeAndGender = predictAgeAndGender;
   exports.recognizeFaceExpressions = recognizeFaceExpressions;
@@ -6559,10 +6557,10 @@
   exports.tinyFaceDetector = tinyFaceDetector;
   exports.tinyYolov2 = tinyYolov2;
   exports.toNetInput = toNetInput;
-  exports.utils = index;
+  exports.utils = index$1;
   exports.validateConfig = validateConfig;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
 //# sourceMappingURL=face-api.js.map
