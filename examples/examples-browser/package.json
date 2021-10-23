@@ -1,11 +1,16 @@
 {
+ "name": "APS-face-detection",
+ "homepage": "http://felipe-boni.github.io/APS-face-detection",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "predeploy": "npm run start",
+    "deploy": "gh-pages start"
   },
   "author": "justadudewhohacks",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
+    "gh-pages": "^3.2.3",
     "request": "^2.88.2"
   }
 }
