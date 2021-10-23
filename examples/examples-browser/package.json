@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node server.js",
     "predeploy": "npm run start",
-    "deploy": "gh-pages start"
+    "deploy": "gh-pages -d dist"
   },
   "author": "justadudewhohacks",
   "license": "MIT",
