@@ -16,7 +16,7 @@ Clone the repository:
 git clone https://github.com/felipeboni/APS-face-detection.git
 ```
 
-## Running the Browser Examples
+## Run
 
 ``` bash
 cd face-api.js/examples/examples-browser
@@ -25,26 +25,6 @@ npm start
 ```
 
 Browse to http://localhost:3000/.
-
-## Running the Nodejs Examples
-
-``` bash
-cd face-api.js/examples/examples-nodejs
-npm i
-```
-
-Now run one of the examples using ts-node:
-
-``` bash
-ts-node faceDetection.ts
-```
-
-Or simply compile and run them with node:
-
-``` bash
-tsc faceDetection.ts
-node faceDetection.js
-```
 
 <a name="face-api.js-for-the-browser"></a>
 
