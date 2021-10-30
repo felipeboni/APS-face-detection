@@ -1389,12 +1389,12 @@
       function DrawTextFieldOptions(options) {
           if (options === void 0) { options = {}; }
           var anchorPosition = options.anchorPosition, backgroundColor = options.backgroundColor, fontColor = options.fontColor, fontSize = options.fontSize, fontStyle = options.fontStyle, padding = options.padding;
-          this.anchorPosition = anchorPosition || AnchorPosition.TOP_LEFT;
+          this.anchorPosition = anchorPosition || AnchorPosition.BOTTOM_LEFT;
           this.backgroundColor = backgroundColor || 'rgba(0, 0, 0, 0.5)';
           this.fontColor = fontColor || 'rgba(255, 255, 255, 1)';
           this.fontSize = fontSize || 14;
-          this.fontStyle = fontStyle || 'Georgia';
-          this.padding = padding || 4;
+          this.fontStyle = fontStyle || 'Roboto';
+          this.padding = padding || 5;
       }
       return DrawTextFieldOptions;
   }());
@@ -1456,8 +1456,8 @@
       function DrawBoxOptions(options) {
           if (options === void 0) { options = {}; }
           var boxColor = options.boxColor, lineWidth = options.lineWidth, label = options.label, drawLabelOptions = options.drawLabelOptions;
-          this.boxColor = boxColor || 'rgba(0, 0, 255, 1)';
-          this.lineWidth = lineWidth || 2;
+          this.boxColor = boxColor || 'rgba(255, 0, 0, 1)';
+          this.lineWidth = lineWidth || 1;
           this.label = label;
           var defaultDrawLabelOptions = {
               anchorPosition: AnchorPosition.BOTTOM_LEFT,

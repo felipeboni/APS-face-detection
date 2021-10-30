@@ -1,6 +1,6 @@
 {
- "name": "APS-face-detection",
- "homepage": "http://felipe-boni.github.io/APS-face-detection",
+  "name": "APS-face-detection",
+  "homepage": "http://felipe-boni.github.io/APS-face-detection",
   "scripts": {
     "start": "node server.js",
     "predeploy": "npm run start",

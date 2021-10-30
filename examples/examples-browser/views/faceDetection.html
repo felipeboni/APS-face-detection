@@ -38,24 +38,24 @@
       <label for="imgUrlInput">Imagens de exemplo:</label>
       <div id="selectList"></div>
 
-      <div class="row">
-        <div class="row">
+      <div class="row" style="display: flex;align-items: center;">
+        <div class="col" style="flex-grow: 1;padding-left: 0;">
           <label for="imgUrlInput">URL:</label>
           <input id="imgUrlInput" type="text" class="bold">
         </div>
 
         <button
-        class="waves-effect waves-light btn"
+        class="waves-effect waves-light btn red col"
         onclick="loadImageFromUrl()">
-        Ok
+        Selecionar
         </button>
       </div>
      
       <!-- image_selection_control -->
     </div>
 
-    <div class="row">
-      <input id="queryImgUploadInput" type="file" class="waves-effect btn bold" onchange="loadImageFromUpload()" accept=".jpg, .jpeg, .png">
+    <div class="row" style="width: 100%;max-width: 800px;">
+      <input id="queryImgUploadInput" type="file" class="waves-effect btn bold red" onchange="loadImageFromUpload()" accept=".jpg, .jpeg, .png" style="width: 100%;">
     </div>
 
     <!-- <div class="row"> -->

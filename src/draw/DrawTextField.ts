@@ -28,12 +28,12 @@ export class DrawTextFieldOptions implements IDrawTextFieldOptions {
 
   constructor(options: IDrawTextFieldOptions = {}) {
     const { anchorPosition, backgroundColor, fontColor, fontSize, fontStyle, padding } = options
-    this.anchorPosition = anchorPosition || AnchorPosition.TOP_LEFT
+    this.anchorPosition = anchorPosition || AnchorPosition.BOTTOM_LEFT
     this.backgroundColor = backgroundColor || 'rgba(0, 0, 0, 0.5)'
     this.fontColor = fontColor || 'rgba(255, 255, 255, 1)'
     this.fontSize = fontSize || 14
-    this.fontStyle = fontStyle || 'Georgia'
-    this.padding = padding || 4
+    this.fontStyle = fontStyle || 'Roboto'
+    this.padding = padding || 5
   }
 }
 
