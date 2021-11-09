@@ -119,7 +119,7 @@ function renderNavBar(navbarId, exampleUri) {
   const githubLink = document.createElement('li')
   githubLink.classList.add('menu-header')
   const h5 = document.createElement('h5')
-  h5.innerHTML = 'Nome Grupo'
+  h5.innerHTML = 'Processamento de Imagens'
   githubLink.appendChild(h5)
   const h6 = document.createElement('h6')
   h6.innerHTML = 'Face Detection em ReactJS'
